@@ -119,7 +119,3 @@ class EvolutionaryAlgorithm:
         self.run()
         self.plot_progress()
         return self.best_solution, self.best_distance
-
-
-
-

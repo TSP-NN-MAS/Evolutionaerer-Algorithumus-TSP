@@ -41,18 +41,13 @@ def main():
     
     # Test für kroB100 mit den besten Parametern
     print("\n--- Test für kroB100 mit den besten Parametern ---")
-    for i, params in enumerate(parameter_sets):
-        μ, λ, mutation_rate, generations = params
-        print(f"\nTest {i+1}: μ={μ}, λ={λ}, Mutationsrate={mutation_rate}")
+    best_params = parameter_sets[0]  # Wir nehmen vorerst die ersten Parameter an
+    μ, λ, mutation_rate, generations = best_params
+    
+    ea = EvolutionaryAlgorithm(city_b.citys, μ, λ, mutation_rate, generations)
+    best_tour, best_distance = ea.run_and_plot()
+    
+    print(f"Beste Distanz für kroB100: {best_distance:.2f}")
 
-        start_time = time.time()
-        ea = EvolutionaryAlgorithm(city_b.citys, μ, λ, mutation_rate, generations)
-        best_tour, best_distance = ea.run()
-        end_time = time.time()
-
-        print(f"Beste Distanz: {best_distance:.2f}")
-        print(f"Rechenzeit: {end_time - start_time:.2f} Sekunden")
-        # Zeichne Konvergenzplot
-        ea.plot_progress()
 if __name__ == "__main__":
     main()
